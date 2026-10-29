@@ -1,10 +1,9 @@
-name: Docker CI
+name: Docker Build CI
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
 
@@ -15,12 +14,12 @@ jobs:
     steps:
 
       -name: Checkout Repository
-        uses: actions/checkout@v4
+       uses: actions/checkout@v4
 
       -name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v3
+       uses: docker/setup-buildx-action@v3
 
       -name: Build Docker Images
-       run:
+       run: |
           docker build -t docker-ci:v1 .
 
